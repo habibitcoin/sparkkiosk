@@ -108,7 +108,8 @@ app.get('/lnurl/:id',(req,res) => {
 app.get('/invoice/',(req,res) => {
 	var id = sanitize((url.parse(req.url, true).query).id);
 	var comment = sanitize((url.parse(req.url, true).query).comment);
-	lnurlstep2(id, comment,res,lndCredentials);
+	var dzAmount = sanitize((url.parse(req.url, true).query).amount);
+	lnurlstep2(id, comment,res,lndCredentials,dzAmount);
 })
 
 

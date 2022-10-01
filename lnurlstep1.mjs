@@ -28,8 +28,8 @@ async function lnurlstep1(id,res){
 		const dataUpdate = appDb.prepare("INSERT INTO invoice (id,datecreated,value,expiry,memo,r_hash,lnurl,status,amount,currency) VALUES (?,CURRENT_TIMESTAMP,?,?,?,'',?,'NEW',?,?);").run(id,satAmount,invoiceExpiry,description,lnurlId,amount,currency);
 		let lnurl = {
 		    callback: serviceUrl+"/invoice/?id="+id,
-		    maxSendable: satAmount,
-		    minSendable: satAmount,
+		    maxSendable: satAmount*10,
+		    minSendable: 1,
 		    metadata: "[[\"text/plain\", \""+ description +"\"]]",
 			commentAllowed: 256,
 		    tag: "payRequest"

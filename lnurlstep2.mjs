@@ -10,11 +10,11 @@ if(serviceUrl ==""){
 	serviceUrl = process.env.APP_HIDDEN_SERVICE;
 }
 
-function lnurlstep2(id,comment,res,lndCredentials){
+function lnurlstep2(id,comment,res,lndCredentials,dzAmount){
 	try{
 		const dataDb = appDb.prepare("SELECT * FROM invoice WHERE id=?;").get(id);
 		if(dataDb!=undefined){
-			var amount = dataDb.value;
+			var amount = dzAmount;
 			var expiry = dataDb.expiry;
 			var memo = dataDb.memo;
 			var currency = dataDb.currency;
